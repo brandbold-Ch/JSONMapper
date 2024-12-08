@@ -3,6 +3,7 @@ import os
 import json
 from jsonmapper.meta.json_meta import JsonInspectMeta
 from jsonmapper.types import BaseField
+from jsonmapper.serializer.register import Register
 
 
 class Model(metaclass=JsonInspectMeta):
@@ -31,9 +32,14 @@ class Model(metaclass=JsonInspectMeta):
 
 class JsonStore(metaclass=JsonInspectMeta):
 
-    def __init__(self,  path: str, database_name: str = "database") -> None:
-        if os.path.exists(path):
-            with open(f"{database_name}.json", "w") as data:
+    def __init__(self, db_path: str, db_name: str = "database") -> None:
+        ctx: dict = Register.memory["db_details"]
+
+        if os.path.exists(db_path):
+            with open(f"{db_name}.json", "w") as data:
                 json.dump({}, data, indent=4)
+
+            ctx["db_path"] = db_path
+            ctx["db_name"] = db_name
         else:
             raise FileNotFoundError("Route not found")

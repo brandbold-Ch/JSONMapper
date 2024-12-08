@@ -39,7 +39,13 @@ class BaseField:
             "unique": self.unique,
             "nullable": self.nullable,
             "choices": self.choices,
-            "default": self.default,
+            "default": (
+                str(type(self.default))
+                if callable(self.default)
+                else str(self.default)
+                if isinstance(self.default, object)
+                else self.default
+            ),
             "foreign_key": self.foreign_key
         }
 
