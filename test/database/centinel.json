@@ -1,0 +1,385 @@
+{
+  "details": {
+    "db_path": "C:\\Users\\Brandbold\\JSONMapper\\test\\database\\centinel.json",
+    "db_name": "centinel"
+  },
+  "models": {
+    "Pet": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "name": {
+          "max_length": 30,
+          "min_length": 2,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "species": {
+          "max_length": 20,
+          "min_length": 3,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "birthdate": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "owner_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        },
+        "status": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "AVAILABLE",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "Appointment": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "pet_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "user_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "date": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "description": {
+          "max_length": 200,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "No description provided",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "Product": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "name": {
+          "max_length": 50,
+          "min_length": 3,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "description": {
+          "max_length": 300,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "price": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "Order": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "user_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "product_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "quantity": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "1",
+          "foreign_key": null
+        },
+        "total_price": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        },
+        "status": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "PENDING",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "Feedback": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "user_id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "content": {
+          "max_length": 500,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        },
+        "rating": {
+          "max_length": 5,
+          "min_length": 1,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "User": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "name": {
+          "max_length": 13,
+          "min_length": 10,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "lastname": {
+          "max_length": 50,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "birthdate": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
+          "foreign_key": null
+        },
+        "timestamp": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "2024-12-08",
+          "foreign_key": null
+        },
+        "role": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "USER",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    },
+    "Admin": {
+      "schema": {
+        "id": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": true,
+          "nullable": true,
+          "choices": null,
+          "default": "<class 'function'>",
+          "foreign_key": null
+        },
+        "role": {
+          "max_length": 255,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "ADMIN",
+          "foreign_key": null
+        }
+      },
+      "data": []
+    }
+  }
+}

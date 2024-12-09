@@ -1,4 +1,6 @@
 import json
+import os.path
+
 from jsonmapper.serializer.register import Register
 
 
@@ -8,5 +10,12 @@ class SerializerJSON:
         db_details: dict = Register.memory["db_details"]
         models_create: dict = Register.memory["models_create"]
 
-        with open(f"{db_details['db_name']}.json", "w") as data:
-            json.dump(models_create, data, indent=2)
+        if os.path.exists(db_details["db_path"]):
+            return
+
+        with open(db_details["db_path"], "r") as read_json:
+            json_data: dict = json.load(read_json)
+            json_data["models"] = models_create
+
+        with open(db_details["db_path"], "w") as write_json:
+            json.dump(json_data, write_json, indent=2)

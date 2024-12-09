@@ -8,38 +8,58 @@ from jsonmapper.serializer.register import Register
 
 class Model(metaclass=JsonInspectMeta):
 
+    def __init__(self):
+
+        ...
+
     def __new__(cls, *args, **kwargs) -> Self:
         if len(args) > 0:
             raise ValueError("No arguments allowed")
 
-        for field, value in cls.__dict__.items():
-            if not isinstance(value, BaseField):
-                continue
+        if len(kwargs) > 0:
+            for field, value in cls.__dict__.items():
+                if not isinstance(value, BaseField):
+                    continue
 
-            if value.default is not None:
-                setter_value = (
-                    value.default() if callable(value.default)
-                    else value.default
-                )
-                setattr(cls, field, setter_value)
-                continue
+                if value.default is not None:
+                    setter_value = (
+                        value.default() if callable(value.default)
+                        else value.default
+                    )
+                    setattr(cls, field, setter_value)
+                    continue
 
-            value.original_value = kwargs.get(field)
-            setattr(cls, field, value.original_value)
+                value.original_value = kwargs.get(field)
+                setattr(cls, field, value.original_value)
 
         return super().__new__(cls)
+
+    def __setattr__(self, key, value):
+        print(key, value)
+
+    def save(self) -> None:
+        ...
+
+    def delete(self) -> None:
+        ...
 
 
 class JsonStore(metaclass=JsonInspectMeta):
 
-    def __init__(self, db_path: str, db_name: str = "database") -> None:
+    def __init__(self, db_path: str = "/", db_name: str = "database.json") -> None:
         ctx: dict = Register.memory["db_details"]
+        path = f"{os.getcwd()}{db_path}"
+        file_path = os.path.normpath(f"{path}/{db_name}.json")
 
-        if os.path.exists(db_path):
-            with open(f"{db_name}.json", "w") as data:
-                json.dump({}, data, indent=4)
-
-            ctx["db_path"] = db_path
+        if os.path.exists(path):
+            ctx["db_path"] = file_path
             ctx["db_name"] = db_name
+
+            if os.path.exists(file_path):
+                return
+
+            with open(file_path, "w") as data:
+                json.dump({"details": ctx}, data, indent=4)
+
         else:
             raise FileNotFoundError("Route not found")
