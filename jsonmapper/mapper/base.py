@@ -8,10 +8,6 @@ from jsonmapper.serializer.register import Register
 
 class Model(metaclass=JsonInspectMeta):
 
-    def __init__(self):
-
-        ...
-
     def __new__(cls, *args, **kwargs) -> Self:
         if len(args) > 0:
             raise ValueError("No arguments allowed")
@@ -29,19 +25,10 @@ class Model(metaclass=JsonInspectMeta):
                     setattr(cls, field, setter_value)
                     continue
 
-                value.original_value = kwargs.get(field)
-                setattr(cls, field, value.original_value)
+                value._value = kwargs.get(field)
+                setattr(cls, field, value._value)
 
         return super().__new__(cls)
-
-    def __setattr__(self, key, value):
-        print(key, value)
-
-    def save(self) -> None:
-        ...
-
-    def delete(self) -> None:
-        ...
 
 
 class JsonStore(metaclass=JsonInspectMeta):

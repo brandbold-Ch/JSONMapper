@@ -61,14 +61,15 @@ class User(Model):
 class Admin(Model):
     id = UUIDField(default=lambda: uuid4(), unique=True)
     role = StringField(default="ADMIN")
+    children = IntegerField()
 
 
 JsonStore(db_name="centinel", db_path="/database/")
 
 
 if __name__ == "__main__":
-    user = User()
-    user.name = "Brandon Jared"
-    user.lastname = "Moliba Vazquez"
-    user.birthdate = "2004-06-04"
-    user.timestamp = datetime.now().date()
+    user = User(
+        name="Brandon Jared",
+        lastname="Molina Vazquez",
+        birthdate="2004-06-04"
+    )

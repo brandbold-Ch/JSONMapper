@@ -13,7 +13,7 @@ class JsonInspectMeta(type):
         for field, value in dct.items():
             if isinstance(value, BaseField) is False:
                 continue
-            type_schema.update({field: value.schema()})
+            type_schema.update({field: value._schema()})
 
         if name not in ["Model", "JsonStore"]:
             ctx.update({

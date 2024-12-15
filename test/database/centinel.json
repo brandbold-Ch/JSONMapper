@@ -7,7 +7,7 @@
     "Pet": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -34,7 +34,7 @@
           "foreign_key": null
         },
         "birthdate": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -43,7 +43,7 @@
           "foreign_key": null
         },
         "owner_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -52,16 +52,16 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         },
         "status": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -75,7 +75,7 @@
     "Appointment": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -84,7 +84,7 @@
           "foreign_key": null
         },
         "pet_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -93,7 +93,7 @@
           "foreign_key": null
         },
         "user_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -102,7 +102,7 @@
           "foreign_key": null
         },
         "date": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -120,12 +120,12 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         }
       },
@@ -134,7 +134,7 @@
     "Product": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -161,7 +161,7 @@
           "foreign_key": null
         },
         "price": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -170,12 +170,12 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         }
       },
@@ -184,7 +184,7 @@
     "Order": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -193,7 +193,7 @@
           "foreign_key": null
         },
         "user_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -202,7 +202,7 @@
           "foreign_key": null
         },
         "product_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -211,7 +211,7 @@
           "foreign_key": null
         },
         "quantity": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -220,7 +220,7 @@
           "foreign_key": null
         },
         "total_price": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -229,16 +229,16 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         },
         "status": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -252,7 +252,7 @@
     "Feedback": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -261,7 +261,7 @@
           "foreign_key": null
         },
         "user_id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -279,12 +279,12 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         },
         "rating": {
@@ -302,7 +302,7 @@
     "User": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -329,7 +329,7 @@
           "foreign_key": null
         },
         "birthdate": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -338,16 +338,16 @@
           "foreign_key": null
         },
         "timestamp": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
-          "default": "2024-12-08",
+          "default": "2024-12-14",
           "foreign_key": null
         },
         "role": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
@@ -361,7 +361,7 @@
     "Admin": {
       "schema": {
         "id": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": true,
           "nullable": true,
@@ -370,12 +370,21 @@
           "foreign_key": null
         },
         "role": {
-          "max_length": 255,
+          "max_length": 0,
           "min_length": 0,
           "unique": false,
           "nullable": true,
           "choices": null,
           "default": "ADMIN",
+          "foreign_key": null
+        },
+        "children": {
+          "max_length": 0,
+          "min_length": 0,
+          "unique": false,
+          "nullable": true,
+          "choices": null,
+          "default": "None",
           "foreign_key": null
         }
       },
