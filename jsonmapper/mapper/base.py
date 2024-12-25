@@ -1,18 +1,17 @@
 from typing import Self
 import os
 import json
-from jsonmapper.meta.json_meta import JsonInspectMeta
-from jsonmapper.types import BaseField
+from jsonmapper.meta.json_meta import InspectMeta
 from jsonmapper.serializer.register import Register
 
 
-class Model(metaclass=JsonInspectMeta):
+class Model(metaclass=InspectMeta):
 
     def __new__(cls, *args, **kwargs) -> Self:
         if len(args) > 0:
             raise ValueError("No arguments allowed")
 
-        if len(kwargs) > 0:
+        """if len(kwargs) > 0:
             for field, value in cls.__dict__.items():
                 if not isinstance(value, BaseField):
                     continue
@@ -26,15 +25,21 @@ class Model(metaclass=JsonInspectMeta):
                     continue
 
                 value._value = kwargs.get(field)
-                setattr(cls, field, value._value)
+                setattr(cls, field, value._value)"""
 
         return super().__new__(cls)
 
+    def model_name(self) -> str:
+        return self.__class__.__name__
 
-class JsonStore(metaclass=JsonInspectMeta):
+    def __repr__(self):
+        return f"{self.model_name()}({self.__dict__})"
+
+
+class JsonStore:
 
     def __init__(self, db_path: str = "/", db_name: str = "database.json") -> None:
-        ctx: dict = Register.memory["db_details"]
+        ctx: dict = Register.data["db_details"]
         path = f"{os.getcwd()}{db_path}"
         file_path = os.path.normpath(f"{path}/{db_name}.json")
 

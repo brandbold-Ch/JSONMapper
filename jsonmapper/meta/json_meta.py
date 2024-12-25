@@ -1,31 +1,33 @@
-from typing import Self, Any
+from typing import Type, Dict, Any
 from jsonmapper.serializer.register import Register
-from jsonmapper.types import BaseField
-from jsonmapper.serializer.creator import SerializerJSON
+from jsonmapper.types import Field
 
 
-class JsonInspectMeta(type):
+class InspectMeta(type):
 
-    def __new__(cls, name: str, bases: tuple, dct: dict) -> Self:
-        ctx: dict = Register.memory["models_create"]
-        type_schema: dict = {}
+    def __new__(
+            cls: Type["InspectMeta"],
+            name: str,
+            bases: tuple,
+            dct: Dict[str, Any]
+    ) -> "InspectMeta":
+        if name == "Model":
+            return super().__new__(cls, name, bases, dct)
 
-        for field, value in dct.items():
-            if isinstance(value, BaseField) is False:
-                continue
-            type_schema.update({field: value._schema()})
+        models_context = Register.data["models_create"]
+        schema_fields = cls._extract_schema_fields(dct)
 
-        if name not in ["Model", "JsonStore"]:
-            ctx.update({
-                name: {
-                    "schema": type_schema,
-                    "data": []
-                }
-            })
+        models_context[name] = {
+            "schema": schema_fields,
+            "data": []
+        }
 
         return super().__new__(cls, name, bases, dct)
 
-    def __call__(self, *args, **kwargs) -> Any:
-        if self.__name__ != "JsonStore":
-            SerializerJSON()
-        return super().__call__(*args, **kwargs)
+    @staticmethod
+    def _extract_schema_fields(attributes: Dict[str, Any]) -> Dict[str, Any]:
+        return {
+            field_name: field_value.schema_repr()
+            for field_name, field_value in attributes.items()
+            if isinstance(field_value, Field)
+        }

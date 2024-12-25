@@ -1,9 +1,7 @@
+from collections import defaultdict
+
 
 class Register:
-    memory: dict = {
-        "db_details": {
-            "db_path": None,
-            "db_name": None
-        },
-        "models_create": {}
-    }
+    data = defaultdict(dict)
+    data["db_details"] = {}
+    data["models_create"] = {}
